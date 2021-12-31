@@ -5,9 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
   </head>
   <body>
-    <h1>Hello world</h1>
+    <div class="title">
+      <h1>My Book Library</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo unde
+        consectetur saepe quam necessitatibus blanditiis sunt adipisci. Laborum
+        commodi, velit iste eaque optio adipisci debitis dolor quos temporibus
+        atque consequuntur.
+      </p>
+    </div>
+
+    <form onsubmit="return false">
+      <label for="book-name">Book</label>
+      <input type="text" id="book-name" />
+      <label for="book-name">Author</label>
+      <input type="text" id="author" />
+      <label for="book-name">Read?</label>
+      <input type="checkbox" id="have-read"/>
+      <button id="submit">submit</button>
+    </form>
+
+    <br />
+
+    <div class="output">
+      <hr />
+      <div class="book">
+        <p class="name">The lord of the rings</p>
+        <p class="author">Tolkein</p>
+        <p class="status">Read</p>
+        <button>Delete</button>
+        <button class="update">Update</button>
+      </div>
+      </div>
+    </div>
   </body>
 </html>
