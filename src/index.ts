@@ -1,4 +1,5 @@
 import { Book } from './Book';
+import { LocalStorage } from './LocalStorage';
 
 const output = document.querySelector('.output') as HTMLElement;
 const submitBtn = document.querySelector('#submit') as HTMLButtonElement;
@@ -30,6 +31,7 @@ function doesContainClass(el: HTMLElement, str: string) {
 }
 
 function handleBookDelete(id: number) {
+  LocalStorage.remove(id.toString());
   books = books.filter(book => book.id !== id);
   displayBooks();
 }
@@ -47,6 +49,7 @@ function handleBookUpdate(parentEl: HTMLElement, bookId: number) {
   btnSubmit.addEventListener('click', () => {
     parentEl.innerHTML = foundBook.toHTML();
     foundBook.updateBook(inputs);
+    LocalStorage.update(foundBook);
     submitBtn.disabled = false;
     displayBooks();
   });
@@ -61,4 +64,5 @@ function displayBooks() {
 
 books.push(new Book('ShIT', 'CRAP', true, 69));
 books.push(new Book('dASDLA', 'DJSAKLDJSAK:', false, 70));
+LocalStorage.getLocalStorageItems(books);
 displayBooks();

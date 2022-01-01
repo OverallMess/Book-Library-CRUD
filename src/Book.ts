@@ -1,3 +1,12 @@
+import { LocalStorage } from './LocalStorage';
+
+export interface bookInterface {
+  name: string;
+  author: string;
+  hasRead: boolean;
+  id: number;
+}
+
 export class Book {
   private name: string;
   private author: string;
@@ -12,12 +21,18 @@ export class Book {
   }
 
   static createBook(inputFields: NodeListOf<HTMLInputElement>, id: number) {
-    return new Book(
+    const newBook = new Book(
       inputFields[0].value,
       inputFields[1].value,
       inputFields[2].checked,
       id
     );
+    LocalStorage.add(newBook);
+    return newBook;
+  }
+
+  static createBookFromInterface(newBook: bookInterface) {
+    return new Book(newBook.name, newBook.author, newBook.hasRead, newBook.id);
   }
 
   updateBook(inputFields: NodeListOf<HTMLInputElement>) {
