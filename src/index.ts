@@ -1,30 +1,29 @@
-import { isJSDocReturnTag } from 'typescript';
 import { Book } from './Book';
 
-const output = document.querySelector('.output')!;
-const submitBtn = document.querySelector('#submit')!;
+const output = document.querySelector('.output') as HTMLElement;
+const submitBtn = document.querySelector('#submit') as HTMLButtonElement;
 let books: Book[] = [];
 
 output.addEventListener('click', e => {
   //Delete button is pressed
   if (doesContainClass(e.target as HTMLElement, 'delete')) {
-    const parent = (e.target as HTMLElement).closest('.book');
-    const id = Number((parent as HTMLElement).dataset.id);
+    const parent = (e.target as HTMLElement).closest('.book') as HTMLElement;
+    const id = Number(parent.dataset.id);
     handleBookDelete(id);
   }
   //Update button is pressed
   else if (doesContainClass(e.target as HTMLElement, 'update')) {
-    const parent = (e.target as HTMLElement).closest('.book');
-    const id = Number((parent as HTMLElement).dataset.id);
-    handleBookUpdate(parent as HTMLElement, id);
+    const parent = (e.target as HTMLElement).closest('.book') as HTMLElement;
+    const id = Number(parent.dataset.id);
+    handleBookUpdate(parent, id);
   }
 });
 
 submitBtn.addEventListener('click', e => {
-  const inputFields = document.querySelectorAll('form input');
-  books.push(
-    Book.createBook(inputFields as NodeListOf<HTMLInputElement>, books.length)
-  );
+  const inputFields = document.querySelectorAll(
+    'form input'
+  ) as NodeListOf<HTMLInputElement>;
+  books.push(Book.createBook(inputFields, books.length));
   displayBooks();
 });
 
@@ -41,7 +40,7 @@ function handleBookUpdate(parentEl: HTMLElement, bookId: number) {
   const foundBook = books.find(book => book.id === bookId);
   if (!foundBook) return;
 
-  (submitBtn as HTMLButtonElement).disabled = true;
+  submitBtn.disabled = true;
   parentEl.innerHTML = foundBook.toUpdateHTML();
 
   const btnSubmit = parentEl.querySelector('#submit')!;
@@ -50,7 +49,7 @@ function handleBookUpdate(parentEl: HTMLElement, bookId: number) {
   btnSubmit.addEventListener('click', () => {
     parentEl.innerHTML = foundBook.toHTML();
     foundBook.updateBook(inputs);
-    (submitBtn as HTMLButtonElement).disabled = false;
+    submitBtn.disabled = false;
     displayBooks();
   });
 }
