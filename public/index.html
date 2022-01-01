@@ -9,7 +9,68 @@
     <script src="index.js" defer></script>
   </head>
   <body>
-    <div class="title">
+    <main class="main">
+      <div class="container center">
+        <h1>Library CRUD application</h1>
+      </div>
+
+      <div class="top-gap-large" style="color: red" id="output-message">
+        &nbsp;
+      </div>
+      <div class="inputs top-gap-med">
+        <div class="row g-5 inputs form">
+          <div class="col">
+            <input
+              required
+              type="text"
+              class="form-control wide"
+              placeholder="Book name"
+              aria-label="Book name"
+            />
+          </div>
+          <div class="col">
+            <input
+              required
+              type="text"
+              class="form-control wide"
+              placeholder="Book author"
+              aria-label="Book author"
+            />
+          </div>
+          <div class="col form-check form-switch wide">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="flexSwitchCheckChecked"
+              checked
+            />
+            <label class="form-check-label" for="flexSwitchCheckChecked"
+              >Have you read it?</label
+            >
+          </div>
+          <div class="col form-check">
+            <button type="submit" class="btn btn-dark" id="submit">
+              Add Book
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <table class="table top-gap-med">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Book title</th>
+            <th scope="col">Book Author</th>
+            <th scope="col">Have Read</th>
+          </tr>
+        </thead>
+        <tbody class="output"></tbody>
+      </table>
+    </main>
+
+    <!-- <div class="title">
       <h1>My Book Library</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo unde
@@ -41,6 +102,6 @@
         <button class="update">Update</button>
       </div>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>

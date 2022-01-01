@@ -1,8 +1,36 @@
-/* body {
-  background-color: red;
-} */
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
-.book {
+body {
   display: flex;
-  gap: 24px;
+  justify-content: center;
+}
+
+.wide {
+  width: 350px;
+}
+
+.inputs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.main {
+  margin-top: 6.25%;
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.center {
+  text-align: center;
+}
+
+.top-gap-med {
+  margin-top: 48px;
+}
+
+.top-gap-large {
+  margin-top: 96px;
 }
