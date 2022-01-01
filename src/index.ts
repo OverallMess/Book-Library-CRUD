@@ -5,16 +5,14 @@ const submitBtn = document.querySelector('#submit') as HTMLButtonElement;
 let books: Book[] = [];
 
 output.addEventListener('click', e => {
-  //Delete button is pressed
-  if (doesContainClass(e.target as HTMLElement, 'delete')) {
-    const parent = (e.target as HTMLElement).closest('.book') as HTMLElement;
-    const id = Number(parent.dataset.id);
+  const currentElement = e.target as HTMLElement;
+  const parent = currentElement.closest('.book') as HTMLElement;
+  if (!parent) return;
+  const id = Number(parent.dataset.id);
+
+  if (doesContainClass(currentElement, 'delete')) {
     handleBookDelete(id);
-  }
-  //Update button is pressed
-  else if (doesContainClass(e.target as HTMLElement, 'update')) {
-    const parent = (e.target as HTMLElement).closest('.book') as HTMLElement;
-    const id = Number(parent.dataset.id);
+  } else if (doesContainClass(currentElement, 'update')) {
     handleBookUpdate(parent, id);
   }
 });
